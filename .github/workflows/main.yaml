@@ -10,8 +10,8 @@ on:
       - main
 
   # Regularly run this workflow (on the default branch) to update the available versions
-  # schedule:
-  #   - cron: '0 * * * *'
+  schedule:
+    - cron: '0 * * * *'
 
   # Allow manual dispatch of this workflow
   workflow_dispatch:
@@ -68,3 +68,22 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Keep this workflow alive even if there were no commits in the last 60 days
+  # (see https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/disabling-and-enabling-a-workflow)
+  keepalive:
+    name: Keepalive
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'schedule'
+
+    steps:
+      - name: Keep workflow alive
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.actions.enableWorkflow({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'main.yaml'
+            })
