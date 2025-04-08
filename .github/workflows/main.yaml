@@ -7,8 +7,7 @@ on:
   # Only run this workflow on push in the default branch, other branches will be built by the pull_request trigger
   push:
     branches:
-      # TODO: replace with default branch name once this is merged upstream
-      - loading-screen-rework
+      - main
 
   # Regularly run this workflow (on the default branch) to update the available versions
   # schedule:
@@ -53,8 +52,7 @@ jobs:
 
     # only run on default branch
     # TODO: replace with this once this becomes the default branch
-    # if: github.ref_name == github.event.repository.default_branch
-    if: github.ref == 'refs/heads/loading-screen-rework'
+    if: github.ref_name == github.event.repository.default_branch
 
     # setup required permissions to deploy pages
     permissions:
