@@ -1,18 +1,54 @@
-# Guild Wars 2 Addons Repository
-### Description
+# gw2load/manifest
 
-A list of validated addons compatible with the [GW2 Addon Loader](https://github.com/gw2-addon-loader/loader-core), to be used with the [GW2 Addon Manager](https://github.com/gw2-addon-loader/GW2-Addon-Manager).
+This repository holds all the data used to generate a manifest of gw2load compatible addons for the [GW2 Addon Manager](https://github.com/gw2load/GW2AddonManager).
+The manifest is generated using [gw2load/generate-manifest-action](https://github.com/gw2load/generate-manifest/action) and available at https://gw2load.github.io/manifest/manifest.json.
 
-The objective of this list is to provide a comprehensive list of add-ons that work with the GW2 Addon Loader and GW2 Addon Manager as well as provide descriptive `update.yaml` files for each.
 
-`update.yaml` is intended to serve as a consistent source of information to both the addon manager and the addon loader for configuration, installation, chain loading, etc. of any addon.
+## Add your addon
 
-A template file can be found here, as well as existing folders displaying what a completed `update.yaml` file looks like in practice.
+If your addon is compatible with gw2load (or ArcDPS) and you would like it to be available through the Addon Manager, follow these steps:
 
-### How to Add Your Addon
+1. [Fork](https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo) this repository.
 
-Submit a PR where you add a folder with the name of your addon (preferably in relatively short and basic form, e.g. `gw2radial` or `arcdps_bhud`) with a completed `update.yaml` file within. See the `d912pxy` example as a rough guideline.
+2. Add a new `.toml` file in the [addons](./addons/) directory using this schema:
 
-### Usage
+    ```toml
+    # General information about your addon
+    [package]
+    id = "<unique id of your addon>"
+    name = "<name of your addon>"
+    description = "<description of your addon>"
+    tooltip = "<tooltip of your addon>"
+    website = "<website of your addon>"
+    developer = "<developer of your addon>"
+    issue_tracker = "<optional issue tracker of your addon>"
+    vcs = "<optional source repository url of your addon>"
 
-If you'd like to use this curated list for your own purposes, you can use the [landing page](https://gw2-addon-loader.github.io/addon-repo/) or the [master JSON file](https://gw2-addon-loader.github.io/addon-repo/addons.json). The JSON file is updated hourly.
+    # Dependency information
+    dependencies = ["<optional array of required dependency addons>"]
+    optional_dependencies = ["<optional array of optional dependency addons>"]
+    conflicts = ["<optional array of known addon conflicts>"]
+
+    # Hosting configuration used to automatically update your addon
+    # Choose either `host.github` or `host.standalone`
+    [host.github]
+    url = "<org/repo>"
+
+    [host.standalone]
+    url = "<url of your addon dll>"
+    version_url = "<url returning your current version>"
+    prerelease_url = "<optional url of your prerelease addon dll>"
+    prerelease_version_url = "<optional url returning your current prerelease version>"
+
+    # Installation mode
+    [installation]
+    mode = "gw2load" # for addons natively loaded by gw2load
+    mode = "arc"     # for addons loaded through ArcDPS
+    ```
+
+3. Submit a [Pull Request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+
+
+## License
+
+Licensed under the [MIT License](./LICENSE).
