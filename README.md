@@ -1,7 +1,7 @@
 # gw2load/manifest
 
 This repository holds all the data used to generate a manifest of gw2load compatible addons for the [GW2 Addon Manager](https://github.com/gw2load/GW2AddonManager).
-The manifest is generated using [gw2load/generate-manifest-action](https://github.com/gw2load/generate-manifest/action) and available at https://gw2load.github.io/manifest/manifest.json.
+The manifest is generated using [gw2load/generate-manifest-action](https://github.com/gw2load/generate-manifest-action) and available at https://gw2load.github.io/manifest/manifest.json.
 
 
 ## Add your addon
