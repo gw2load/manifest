@@ -35,10 +35,11 @@ jobs:
         run: wget -O /tmp/manifest.json "$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')manifest.json" && mv /tmp/manifest.json out/manifest.json
 
       - name: Create manifest
-        uses: gw2load/generate-manifest-action@main
+        uses: gw2load/generate-manifest-action@feature/add-loader-to-manifest
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           manifest_path: out/manifest.json
+          loader_repository: gw2load/GW2Load
 
       - name: Upload manifest as artifact
         uses: actions/upload-pages-artifact@v3
