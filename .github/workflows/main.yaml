@@ -39,6 +39,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           manifest_path: out/manifest.json
+          loader_repository: gw2load/GW2Load
 
       - name: Upload manifest as artifact
         uses: actions/upload-pages-artifact@v3
