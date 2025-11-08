@@ -74,8 +74,9 @@ jobs:
   keepalive:
     name: Keepalive
     runs-on: ubuntu-latest
-
     if: github.event_name == 'schedule'
+    permissions:
+      actions: write
 
     steps:
       - name: Keep workflow alive
