@@ -8,7 +8,7 @@ developer = "direct"
 issue_tracker = "https://github.com/itsdirect/external-links-releases/issues"
 
 [host.github]
-url = "https://github.com/itsdirect/external-links-releases"
+url = "itsdirect/external-links-releases"
 
 [installation]
 mode = "gw2load"
