@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Create output directory
         run: mkdir out
@@ -42,7 +42,7 @@ jobs:
           loader_repository: gw2load/GW2Load
 
       - name: Upload manifest as artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: out/
 
@@ -67,7 +67,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   # Keep this workflow alive even if there were no commits in the last 60 days
   # (see https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/disabling-and-enabling-a-workflow)
@@ -80,7 +80,7 @@ jobs:
 
     steps:
       - name: Keep workflow alive
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             github.rest.actions.enableWorkflow({
