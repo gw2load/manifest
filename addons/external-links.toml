@@ -1,0 +1,14 @@
+[package]
+id = "external-links"
+name = "External Links"
+description = "An addon that lets external links (gw2://...) perform actions in Guild Wars 2."
+tooltip = "Let external links (gw2://...) perform actions in Guild Wars 2"
+website = "https://github.com/itsdirect/external-links-releases"
+developer = "direct"
+issue_tracker = "https://github.com/itsdirect/external-links-releases/issues"
+
+[host.github]
+url = "https://github.com/itsdirect/external-links-releases"
+
+[installation]
+mode = "gw2load"
